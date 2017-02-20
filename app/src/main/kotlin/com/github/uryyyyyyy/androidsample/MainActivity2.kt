@@ -10,7 +10,7 @@ import android.widget.TextView
 import io.reactivex.subjects.BehaviorSubject
 
 
-class MainActivity : Activity() {
+class MainActivity2 : Activity() {
 
     val count: BehaviorSubject<Int> = BehaviorSubject.createDefault(0)
 
@@ -40,11 +40,11 @@ class MainActivity : Activity() {
         count.subscribe{v -> scoreView.text = "${v}点だよ" }
 
         val backButton = Button(this)
-        backButton.text = "Next"
+        backButton.text = "back"
         linearLayout.addView(backButton)
         backButton.setOnClickListener{v ->
-            val intent = Intent(this, MainActivity2::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            val intent = Intent(this, MainActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP + Intent.FLAG_ACTIVITY_SINGLE_TOP
             startActivity(intent)
         }
     }
